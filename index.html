@@ -1,41 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Добавлен meta viewport -->
+
   <title>Erekshe Analar</title>
-  </header>
-
-  <!-- Favicon -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@700&display=swap" rel="stylesheet">
   <link rel="icon" href="1.png" type="image/jpeg">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 
-  <style> 
-/* Кнопка "Наверх" - только стрелка, фиксирована в правом нижнем углу */
-#scrollToTop {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  background: none;
-  border: none;
-  color: #ad913c;
-  font-size: 32px;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  transition: color 0.3s ease;
-}
-
-#scrollToTop:hover {
-  color: #8e7632;
-}
-
-    /* Плавная прокрутка страницы */
+  <style>
     html {
       scroll-behavior: smooth;
     }
@@ -48,228 +23,312 @@
       text-align: center;
       color: #000;
       transition: all 0.3s ease;
-      padding-top: 100px; /* Отступ сверху под навбар */
+      padding-top: 100px;
     }
 
+    .full-width-section {
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: +32vw;
+      width: 100vw;
+      background: linear-gradient(to right, #009945, #F5F5DC);
+      box-sizing: border-box;
+      padding: 30px 0;
+      overflow-x: hidden;
+    }
 
-      .full-width-section {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: +32vw;
-  width: 100vw;
-    background: linear-gradient(to right, #009945, #F5F5DC); /* светло-зелёный фон */
-  box-sizing: border-box;
-  padding: 30px 0;
-  overflow-x: hidden; /* защита от горизонтального скролла */
-}
-  /* Навигационная панель */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(173, 255, 128, 0.395);
-  padding: 10px 30px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: top 0.4s ease, opacity 0.8s ease, transform 0.8s ease;
-}
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(173, 255, 128, 0.395);
+      padding: 10px 30px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: top 0.4s ease, opacity 0.8s ease, transform 0.8s ease;
+      flex-wrap: wrap;
+    }
 
+    .navbar.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.navbar.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .navbar-left {
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+    }
 
-/* Левая часть — текст */
-.navbar-left {
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-}
+    .navbar-center {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
 
-/* Центр — пункты меню */
-.navbar-center {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  margin: 0;
-  padding: 0;
-}
+    .navbar-center li {
+      margin: 0 20px;
+    }
 
-.navbar-center li {
-  margin: 0 20px;
-}
+    .navbar-center a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
 
-.navbar-center a {
-  text-decoration: none;
-  color: white;
-  font-size: 18px;
-  transition: color 0.3s;
-}
+    .navbar-center a:hover {
+      color: #f0e68c;
+    }
 
-.navbar-center a:hover {
-  color: #f0e68c;
-}
+    #scrollToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      background: none;
+      border: none;
+      color: #ad913c;
+      font-size: 32px;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+
+    #scrollToTop:hover {
+      color: #8e7632;
+    }
+
+    /* 🌐 Медиа-запрос для мобильных устройств */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .navbar-left {
+        margin-bottom: 10px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .navbar-center {
+        flex-direction: column;
+      }
+
+      .navbar-center li {
+        margin: 10px 0;
+      }
+    }
 
 /* Правая часть — логотип */
-.navbar-right img {
-  height: 50px;
-}
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* расстояние между логотипами */
-  margin-right: 40px; /* двигай логотипы левее, уменьшая это значение */
-}
-
 .navbar-right img {
   height: 45px;
   object-fit: contain;
 }
 
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 40px;
+}
 
+/* Общие стили для секций */
+section {
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 0px;
+  width: calc(60% + 6cm);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
 
-    /* Общие стили для секций */
-    section {
-   
-      margin: 40px auto;
-      padding: 30px;
-      border-radius: 0px;
-      width: calc(60% + 6cm);
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease;
-    }
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+h1.title {
+  font-family: 'Georgia', serif;
+  font-size: 48px;
+  margin: 20px 0;
+}
 
-    h1.title {
-      font-family: 'Georgia', serif;
-      font-size: 48px;
-      margin: 20px 0;
-    }
+/* Логотип */
+.site-logo {
+  margin-top: 0px;
+}
 
-    /* Логотип */
-  .site-logo {
-    margin-top: 0px;
+.site-logo img {
+  width: 200px;
+  height: auto;
+  border-radius: 1000%;
+}
+
+/* 📱 Мобильная адаптация */
+@media (max-width: 768px) {
+  .navbar-right {
+    justify-content: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+
+  .navbar-right img {
+    height: 35px;
+  }
+
+  section {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h1.title {
+    font-size: 32px;
   }
 
   .site-logo img {
-    width: 200px;
-    height: auto;
-    border-radius: 1000%; /* Восстановил окружность для логотипа */
+    width: 140px;
   }
+}
 
     /* О клинике */
-    #about-clinic {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      text-align: center;
-      margin-left: 10%;
-    }
+#about-clinic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-left: 10%;
+}
 
-    #about-clinic .text {
-      width: 50%;
-      text-align: center;
-    }
+#about-clinic .text {
+  width: 50%;
+  text-align: center;
+}
 
-    #about-clinic .image {
-      width: 50%;
-    }
+#about-clinic .image {
+  width: 50%;
+}
 
-    #about-clinic .image img {
-      width: 100%;
-      height: auto;
-     
-    }
+#about-clinic .image img {
+  width: 100%;
+  height: auto;
+}
 
-    #about-clinic h2 {
-      text-transform: uppercase;
-      font-size: 26px;
-      margin: 0;
-    }
+#about-clinic h2 {
+  text-transform: uppercase;
+  font-size: 26px;
+  margin: 0;
+}
 
-    /* Кабинеты */
-    #cabinets {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 40px;
+/* Кабинеты */
+#cabinets {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding: 30px;
+  width: calc(60% + 6cm);
+  margin: 40px auto;
+  margin-left: 10%;
+}
 
-      padding: 30px;
-  
-      width: calc(60% + 6cm);
-      margin: 40px auto;
-      margin-left: 10%;
-    }
-    #cabinets .text {
-      width: 30%;
-      text-align: left;
-    }
+#cabinets .text {
+  width: 30%;
+  text-align: left;
+}
 
-    #cabinets .image {
-      width: 70%;
-    }
+#cabinets .image {
+  width: 70%;
+}
 
-    #cabinets .image img {
-      width: 100%;
-      height: auto;
+#cabinets .image img {
+  width: 100%;
+  height: auto;
+}
 
-    }
+#cabinets h2 {
+  text-transform: uppercase;
+  font-size: 26px;
+  text-align: left;
+}
 
-    #cabinets h2 {
-      text-transform: uppercase;
-      font-size: 26px;
-      text-align: left;
-    }
-    .white-background {
+.white-background {
   background-color: white;
   padding-top: 20px;
   padding-bottom: 40px;
 }
 
+/* 📱 Мобильная адаптация */
+@media (max-width: 768px) {
+  #about-clinic,
+  #cabinets {
+    flex-direction: column;
+    margin-left: 0;
+    width: 90%;
+    padding: 20px;
+  }
 
-    /* Услуги */
-    #services {
-      margin-left: 10%;
-    }
+  #about-clinic .text,
+  #about-clinic .image,
+  #cabinets .text,
+  #cabinets .image {
+    width: 100%;
+    text-align: center;
+  }
 
-    #services h2 {
-      text-transform: uppercase;
-      font-size: 36px;
-    }
+  #cabinets .text {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-    #services ul {
-      list-style: none;
-      padding: 0;
-    }
+  #cabinets h2,
+  #about-clinic h2 {
+    font-size: 20px;
+  }
+}
+/* Услуги */
+#services {
+  margin-left: 10%;
+}
 
+#services h2 {
+  text-transform: uppercase;
+  font-size: 36px;
+}
 
-    .branches {
+#services ul {
+  list-style: none;
+  padding: 0;
+}
+
+.branches {
   display: flex;
   justify-content: center;
   gap: 30px;
-  padding: 20px 0; /* небольшой вертикальный отступ, чтобы не прилегали к краям */
+  padding: 20px 0;
   width: 100%;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .branch-card {
-  background: rgba(160, 250, 158, 0.85); /* светлый фон с прозрачностью для контраста на фоне */
+  background: rgba(160, 250, 158, 0.85);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   width: 260px;
@@ -312,7 +371,37 @@
   background-color: #007a33;
 }
 
+/* 📱 Мобильная адаптация */
+@media (max-width: 768px) {
+  #services {
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+  }
 
+  #services h2 {
+    font-size: 24px;
+  }
+
+  .branches {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .branch-card {
+    width: 90%;
+  }
+
+  .branch-info h3 {
+    font-size: 18px;
+  }
+
+  .write-btn {
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+}
 
 
 /* Контакты */
@@ -405,6 +494,58 @@ body, html {
       margin-top: 50px;
       animation: bounce 1.5s infinite;
     }
+    
+    /* 📱 Мобильная адаптация контактов */
+@media (max-width: 768px) {
+  #contacts {
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  #contacts h2 {
+    font-size: 20px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .white-background hr {
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  .white-background {
+    padding-bottom: 10px;
+  }
+
+  .social-links {
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    right: 10px;
+    transform: none;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .social-links a {
+    font-size: 24px;
+    margin: 0;
+  }
+
+  .scroll-down {
+    font-size: 36px;
+    margin-top: 30px;
+  }
+
+  #map {
+    width: 100%;
+    height: auto;
+  }
+}
+
 
     /* Анимация прыгающей стрелки */
     @keyframes bounce {
@@ -519,98 +660,149 @@ body, html {
   .about-next {
     right: 10px;
   }
-  
-  <!-- О клинике-->
-  .about-slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    z-index: 0;
+  /* 📱 Мобильная адаптация карточек и слайдера */
+@media (max-width: 768px) {
+  .cards-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
   }
 
-  .about-slide.active {
-    opacity: 1;
-    z-index: 1;
+  .contact-card {
+    width: 90%;
+    height: 240px;
+    font-size: 16px;
+  }
+
+  .card-label {
+    font-size: 16px;
+    bottom: 50px;
+    padding: 8px;
+  }
+
+  .card-button {
+    font-size: 14px;
+    padding: 8px 20px;
+    bottom: 10px;
   }
 
   .about-prev,
   .about-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 36px;
-    background: none;
-    border: none;
-    color: rgb(87, 87, 87);
-    cursor: pointer;
-    z-index: 2;
+    font-size: 22px;
+    padding: 6px;
+    top: 90%;
+    transform: translateY(-90%);
   }
 
   .about-prev {
-    left: 10px;
+    left: 20px;
   }
 
   .about-next {
-    right: 10px;
+    right: 20px;
   }
+}
 
-  .about-prev:hover,
-  .about-next:hover {
-    color: #ffd700;
-  }
   
+  /* О клинике — слайдер "О нас" */
+.about-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
 
+.about-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
 
-  .slider-container {
-    position: relative;
-    width: 600px;
-    height: 400px;
-    overflow: hidden;
-    border-radius: 12px;
-    background: #333;
-  }
-  .cabinet-slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
-  .cabinet-slide.active {
-    opacity: 1;
-    z-index: 1;
-  }
-  .cabinet-prev,
-  .cabinet-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 36px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    z-index: 2;
-    user-select: none;
-  }
-  .cabinet-prev {
-    left: 10px;
-  }
-  .cabinet-next {
-    right: 10px;
-  }
-  .cabinet-prev:hover,
-  .cabinet-next:hover {
-    color: #ffd700;
-  }
-  @media screen and (max-width: 768px) {
+.about-prev,
+.about-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  background: none;
+  border: none;
+  color: rgb(87, 87, 87);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.about-prev {
+  left: 10px;
+}
+
+.about-next {
+  right: 10px;
+}
+
+.about-prev:hover,
+.about-next:hover {
+  color: #ffd700;
+}
+
+/* Слайдер "Кабинеты" */
+.slider-container {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #333;
+}
+
+.cabinet-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.cabinet-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.cabinet-prev,
+.cabinet-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+  user-select: none;
+}
+
+.cabinet-prev {
+  left: 10px;
+}
+
+.cabinet-next {
+  right: 10px;
+}
+
+.cabinet-prev:hover,
+.cabinet-next:hover {
+  color: #ffd700;
+}
+
+/* 📱 Мобильная адаптация */
+@media screen and (max-width: 768px) {
   body {
     padding-top: 80px;
     font-size: 16px;
@@ -690,6 +882,85 @@ body, html {
 
   .site-logo img {
     width: 150px;
+  }
+
+  /* Мобильная адаптация слайдеров */
+  .slider-container {
+    width: 90%;
+    height: 250px;
+  }
+
+  .about-prev,
+  .about-next,
+  .cabinet-prev,
+  .cabinet-next {
+    font-size: 24px;
+    top: 90%;
+    transform: translateY(-90%);
+  }
+
+  .about-prev,
+  .cabinet-prev {
+    left: 15px;
+  }
+
+  .about-next,
+  .cabinet-next {
+    right: 15px;
+  }
+}
+/* Мобильная адаптация */
+@media screen and (max-width: 768px) {
+  #cabinets {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .slider-container,
+  .text {
+    max-width: 100%;
+    height: auto; /* чтобы не было фиксированной высоты */
+    flex: none;
+  }
+
+  .slider-container {
+    height: 300px; /* можно уменьшить высоту на мобилках */
+  }
+
+  .text h2 {
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Исходные стили для блока text и h2 (которые сейчас inline) лучше вынести в CSS, чтобы удобно менять */
+.text h2 {
+  font-size: 36px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #ff943d;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+/* Мобильная адаптация */
+@media screen and (max-width: 768px) {
+  .text {
+    flex: none; /* Чтобы блок не сжимался по флексу */
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .text h2 {
+    font-size: 24px; /* меньше размер шрифта на мобильных */
+    letter-spacing: 1px; /* чуть меньше интервал */
+    text-align: center; /* выровнять по центру */
+    margin-bottom: 15px;
   }
 }
 
@@ -834,22 +1105,27 @@ body, html {
 </section>
 
 
-<!-- Услуги -->
-<h2 id="comanda" style="font-size: 32px; text-align: center; font-family: 'Playfair Display', serif; font-weight: 700; color: #b4963b;">
+<!-- Услуги и команды -->
+<h2 style="font-size: 32px; text-align: center; font-family: 'Playfair Display', serif; font-weight: 700; color: #b4963b;">
+  <!-- Пустой заголовок можно убрать или заполнить -->
 </h2>
+
 <div style="background: #f5e9e9; padding: 10px 0;">
-  <h2 style="font-size: 28px; text-align: center ; margin-bottom: 0px; font-family: 'Cinzel', serif; font-weight: bold; color: #b4963b "><strong>Наша Команда на "Сатпаева 23/1"</strong></h2>
-  <h2 style="font-size: 18px; text-align: center; margin-bottom: 50px;">Специалисты, которые будут с вашими детьми</h2>
+  <h2 style="font-size: 28px; text-align: center; margin-bottom: 0; font-family: 'Cinzel', serif; font-weight: bold; color: #b4963b;">
+    <strong>Наша Команда на "Сатпаева 23/1"</strong>
+  </h2>
+  <h3 style="font-size: 18px; text-align: center; margin-bottom: 50px;">Специалисты, которые будут с вашими детьми</h3>
 
   <!-- Основной контейнер -->
   <div style="display: flex; flex-direction: column; align-items: center; gap: 40px; max-width: 1200px; margin: 0 auto;">
 
     <!-- Ряд 1 -->
-    <div style="display: flex; justify-content: center; gap: 40px;">
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+      <!-- Карточки команды -->
       <div style="text-align: center; width: 250px;">
         <img src="301.jpeg" alt="Член команды 1" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
         <h3>Омарова Мадина Айтжанқызы</h3>
-        <p style="font-size: 14px;">Cоциальный работник</p>
+        <p style="font-size: 14px;">Социальный работник</p>
       </div>
       <div style="text-align: center; width: 250px;">
         <img src="302.jpeg" alt="Член команды 2" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
@@ -864,7 +1140,7 @@ body, html {
     </div>
 
     <!-- Ряд 2 -->
-    <div style="display: flex; justify-content: center; gap: 40px;">
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
       <div style="text-align: center; width: 250px;">
         <img src="304.jpeg" alt="Член команды 4" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
         <h3>Абдрасимова Умит Каирбековна</h3>
@@ -883,7 +1159,7 @@ body, html {
     </div>
 
     <!-- Ряд 3 -->
-    <div style="display: flex; justify-content: center; gap: 40px;">
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
       <div style="text-align: center; width: 250px;">
         <img src="307.jpeg" alt="Член команды 7" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
         <h3>Жылкыбаева Томирис Булатхановна</h3>
@@ -900,43 +1176,40 @@ body, html {
         <p style="font-size: 14px;">Воспитатель</p>
       </div>
     </div>
-        <!-- Ряд 1 -->
-        <div style="display: flex; justify-content: center; gap: 40px;">
-          <div style="text-align: center; width: 250px;">
-            <img src="310.jpeg" alt="Член команды 1" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
-            <h3>Зеленкова Ирина Владимировна</h3>
-            <p style="font-size: 14px;">Инструктор  АФК</p>
-          </div>
-          <div style="text-align: center; width: 250px;">
-            <img src="311.jpeg" alt="Член команды 2" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
-            <h3>Саменова Роза Кулушпаевна </h3>
-            <p style="font-size: 14px;">Инструктор ЛФК</p>
-          </div>
-          <div style="text-align: center; width: 250px;">
-            <img src="312.jpeg" alt="Член команды 3" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
-            <h3>Шугаюпов Кайрат Талгатович</h3>
-            <p style="font-size: 14px;">Инструктор ЛФК</p>
-          </div>
-        </div>
+
+    <!-- Ряд 4 -->
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+      <div style="text-align: center; width: 250px;">
+        <img src="310.jpeg" alt="Член команды 10" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
+        <h3>Зеленкова Ирина Владимировна</h3>
+        <p style="font-size: 14px;">Инструктор АФК</p>
+      </div>
+      <div style="text-align: center; width: 250px;">
+        <img src="311.jpeg" alt="Член команды 11" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
+        <h3>Саменова Роза Кулушпаевна</h3>
+        <p style="font-size: 14px;">Инструктор ЛФК</p>
+      </div>
+      <div style="text-align: center; width: 250px;">
+        <img src="312.jpeg" alt="Член команды 12" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
+        <h3>Шугаюпов Кайрат Талгатович</h3>
+        <p style="font-size: 14px;">Инструктор ЛФК</p>
+      </div>
+    </div>
 
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <!-- Услуги -->
-<h2 id="comanda" style="font-size: 32px; text-align: center; font-family: 'Playfair Display', serif; font-weight: 700; color: #fce08c;">
-</h2>
+</div>
+
+<br><br><br><br><br>
+
+<!-- Вторая команда -->
 <div style="background: #f5e9e9; padding: 10px 0;">
-  <h2 style="font-size: 28px; text-align: center ; margin-bottom: 0px; font-family: 'Cinzel', serif; font-weight: bold; color: #b4963b "><strong>Наша Команда на "Акын Сара 37"</strong></h2>
-  <h2 style="font-size: 18px; text-align: center; margin-bottom: 50px;">Специалисты, которые будут с вашими детьми</h2>
+  <h2 style="font-size: 28px; text-align: center; margin-bottom: 0; font-family: 'Cinzel', serif; font-weight: bold; color: #b4963b;">
+    <strong>Наша Команда на "Акын Сара 37"</strong>
+  </h2>
+  <h3 style="font-size: 18px; text-align: center; margin-bottom: 50px;">Специалисты, которые будут с вашими детьми</h3>
 
-  <!-- Основной контейнер -->
   <div style="display: flex; flex-direction: column; align-items: center; gap: 40px; max-width: 1200px; margin: 0 auto;">
-
-    <!-- Ряд 1 -->
-    <div style="display: flex; justify-content: center; gap: 40px;">
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
       <div style="text-align: center; width: 250px;">
         <img src="101.jpeg" alt="Член команды 1" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
         <h3>Амангелді Айсұлтан Айдынұлы</h3>
@@ -954,8 +1227,7 @@ body, html {
       </div>
     </div>
 
-    <!-- Ряд 2 -->
-    <div style="display: flex; justify-content: center; gap: 45px;">
+    <div style="display: flex; justify-content: center; gap: 45px; flex-wrap: wrap;">
       <div style="text-align: center; width: 250px;">
         <img src="104.jpeg" alt="Член команды 4" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
         <h3>Тенилбаева Галия Кенжеевна</h3>
@@ -967,17 +1239,20 @@ body, html {
         <p style="font-size: 14px;">Психолог</p>
       </div>
     </div>
-    <!-- Услуги -->
-<h2 id="comanda" style="font-size: 32px; text-align: center; font-family: 'Playfair Display', serif; font-weight: 700; color: #fce08c;">
-</h2>
-<div style="background: #f5e9e9; padding: 0px 0;">
-  <h2 style="font-size: 28px; text-align: center ; margin-bottom: 0px; font-family: 'Cinzel', serif; font-weight: bold; color: #b4963b "><strong>Наша Команда на "Аманат 12/1"</strong></h2>
-  <h2 style="font-size: 18px; text-align: center; margin-bottom: 50px;">Специалисты, которые будут с вашими детьми</h2>
+  </div>
+</div>
 
-  <!-- Основной контейнер -->
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 45px; max-width: 1200px; margin: 0 ;">
-    <!-- Ряд 1 -->
-    <div style="display: flex; justify-content: center; gap: 40px; margin:0;">
+<br><br><br>
+
+<!-- Третья команда -->
+<div style="background: #f5e9e9; padding: 10px 0;">
+  <h2 style="font-size: 28px; text-align: center; margin-bottom: 0; font-family: 'Cinzel', serif; font-weight: bold; color: #b4963b;">
+    <strong>Наша Команда на "Аманат 12/1"</strong>
+  </h2>
+  <h3 style="font-size: 18px; text-align: center; margin-bottom: 50px;">Специалисты, которые будут с вашими детьми</h3>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 45px; max-width: 1200px; margin: 0 auto;">
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
       <div style="text-align: center; width: 250px;">
         <img src="201.jpeg" alt="Член команды 1" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
         <h3>Ботаев Усен Калдыбаевич</h3>
@@ -991,106 +1266,104 @@ body, html {
       <div style="text-align: center; width: 250px;">
         <img src="203.jpeg" alt="Член команды 3" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
         <h3>Ашурова Жанаргуль Сатпаевна</h3>
-        <p style="font-size: 14px;">Музыкатерапевт</p>
-      </div>
+        <p style="font-size: 14px;">Педагог</p>
+
+</div>
+<!-- Ряд 2 -->
+<div style="display: flex; justify-content: center; gap: 40px;">
+  <div style="text-align: center; width: 250px;">
+    <img src="204.jpeg" alt="Член команды 4" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <h3>Шаймарданова Айнур Калеловна</h3>
+    <p style="font-size: 14px;">Заведующая</p>
+  </div>
+  <div style="text-align: center; width: 250px;">
+    <img src="205.jpeg" alt="Член команды 5" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <h3>Қажығали Ақжол Нұртайұлы</h3>
+    <p style="font-size: 14px;">Инструктор ЛФК и Бассейн</p>
+  </div>
+</div>
+</div>
+<!-- Карта и контакты -->
+<div style="background: #fff; margin-top: 40px; padding-bottom: 40px;">
+  <h2 id="contact" style="font-size: 36px; text-align: center; font-family: 'Playfair Display', serif; font-weight: 700; color: #b4963b; margin-top: 60px; margin-bottom: 60px;">
+    Наши Контакты и Карты
+  </h2>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Контакты -->
+    <div style="flex: 1 1 350px; min-width: 320px; padding: 0 20px;">
+      <h3 style="font-family: 'Cinzel', serif; font-weight: 700; color: #b4963b;">Центральный офис</h3>
+      <p><strong>Адрес:</strong> г. Астана, ул. Сатпаева 23/1</p>
+      <p><strong>Телефон:</strong> +7 (705) 308 97 33</p>
+      <p><strong>Email:</strong> Ereksheanalar@mail.ru</p>
+      <p><strong>Время работы:</strong> Пн-Пт 08:00-18:00</p>
     </div>
 
-    <!-- Ряд 2 -->
-    <div style="display: flex; justify-content: center; gap: 40px;">
-      <div style="text-align: center; width: 250px;">
-        <img src="204.jpeg" alt="Член команды 4" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
-        <h3>Шаймарданова Айнур Калеловна</h3>
-        <p style="font-size: 14px;">Заведующая</p>
-      </div>
-      <div style="text-align: center; width: 250px;">
-        <img src="205.jpeg" alt="Член команды 5" style="width: 130px; height: 150px; border-radius: 50%; object-fit: cover;">
-        <h3>Қажығали Ақжол Нұртайұлы</h3>
-        <p style="font-size: 14px;">Инструктор ЛФК и Бассейн</p>
-      </div>
+    <!-- Карта 1 -->
+    <div style="flex: 1 1 350px; min-width: 320px;">
+      <iframe 
+  src="https://yandex.kz/map-widget/v1/?ll=71.474330%2C51.142466&z=17&l=map"
+  width="100%" 
+  height="400" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
     </div>
 
+  </div>
 
-    <!-- Контакты и карты -->
-<div class="full-width-section">
-  <div class="contact-block" style="margin-bottom: 0; padding-bottom: 0;">
-    <div style="max-width: 100%; padding: 0 40px; box-sizing: border-box;">
-      <h2 style="text-align: center;">Казахстан, Астана</h2>
-      <p style="text-align: center; font-size: 18px;">Телефон: +7 705 308 9733</p>
-      <p style="text-align: center;">
-        <a href="https://wa.me/77053089733" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 30px; height: 30px; margin: 0;">
-        </a>
-        <a href="https://www.instagram.com/erekshe.analar?igsh=azliYm1jY3Z3cHU1" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 30px; height: 30px; margin: 0;">
-        </a>
-      </p>
+  <div style="margin-top: 60px; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+    <!-- Филиал -->
+    <div style="flex: 1 1 350px; min-width: 320px; padding: 0 20px;">
+      <h3 style="font-family: 'Cinzel', serif; font-weight: 700; color: #b4963b;">Филиал "Акын Сара 37"</h3>
+      <p><strong>Адрес:</strong> г. Астана, ул. Акын Сара 37</p>
+      <p><strong>Телефон:</strong> +7 (705) 308 97 33</p>
+      <p><strong>Время работы:</strong> Пн-Пт 08:00-18:00</p>
+    </div>
+    
 
-      <!-- Три карты -->
-      <div style="display: flex; justify-content: space-between; gap: 50px; flex-wrap: wrap; margin-top: 0px;">
-        <div style="flex: 1; min-width: 280px;">
-          <p class="address-text">ул. Сатпаева 23/1</p>
-          <div id="map-left" style="width: 100%; height: 300px;"></div>
-        </div>
-        <div style="flex: 1; min-width: 280px;">
-          <p class="address-text">ул. Акын Сара 37</p>
-          <div id="map-center" style="width: 100%; height: 300px;"></div>
-        </div>
-        <div style="flex: 1; min-width: 280px;">
-          <p class="address-text">ул. Аманат 12/1</p>
-          <div id="map-right" style="width: 100%; height: 300px;"></div>
-        </div>
-      </div>
+    <!-- Карта 2 -->
+    <div style="flex: 1 1 350px; min-width: 320px;">
+     <iframe 
+  src="https://yandex.ru/map-widget/v1/?ll=71.399311%2C51.145902&z=16=map" 
+  width="100%" 
+  height="400" 
+  frameborder="0" 
+  style="border:0;" 
+  allowfullscreen 
+  aria-hidden="false" 
+  tabindex="0">
+</iframe>
 
+    </div>
+ 
+    <!-- Филиал -->
+    <div style="flex: 1 1 350px; min-width: 320px; padding: 0 20px;">
+      <h3 style="font-family: 'Cinzel', serif; font-weight: 700; color: #b4963b;">Филиал "Аманат 12/1"</h3>
+      <p><strong>Адрес:</strong> г. Астана, ул. Аманат 12/1</p>
+      <p><strong>Телефон:</strong> +7 (705) 308 97 33</p>
+      <p><strong>Время работы:</strong> Пн-Пт 08:00-18:00</p>
+    </div>
+    
+
+    <!-- Карта 2 -->
+    <div style="flex: 1 1 350px; min-width: 320px;">
+      <iframe 
+  src="https://yandex.ru/map-widget/v1/?ll=71.478632%2C51.143162&z=16=map" 
+  width="100%" 
+  height="400" 
+  frameborder="0" 
+  style="border:0;" 
+  allowfullscreen 
+  aria-hidden="false" 
+  tabindex="0">
+</iframe>
     </div>
   </div>
 </div>
-<style>
-.address-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  color: #2c2c2c; /* Можно поменять цвет */
-  font-weight: 600;
-}
-
-</style>
-
-<!-- Скрипт карт -->
-<script type="text/javascript">
-  ymaps.ready(function () {
-    // Левая карта
-    var mapLeft = new ymaps.Map('map-left', {
-      center: [51.142466, 71.474330],
-      zoom: 17
-    });
-    mapLeft.geoObjects.add(new ymaps.Placemark([51.142466, 71.474330], {
-      hintContent: 'ул. Сатпаева 23/1',
-      balloonContent: 'Добро пожаловать!'
-    }));
-
-    // Центральная карта
-    var mapCenter = new ymaps.Map('map-center', {
-      center: [51.145902, 71.399312],
-      zoom: 17
-    });
-    mapCenter.geoObjects.add(new ymaps.Placemark([51.145902, 71.399312], {
-      hintContent: 'ул. Акын Сара 37',
-      balloonContent: 'Центральная точка'
-    }));
-
-    // Правая карта
-    var mapRight = new ymaps.Map('map-right', {
-      center: [51.143161, 71.478633],
-      zoom: 17
-    });
-    mapRight.geoObjects.add(new ymaps.Placemark([51.143161, 71.478633], {
-      hintContent: 'ул. Аманат 12/1',
-      balloonContent: 'Правый офис'
-    }));
-  });
-</script>
 
 
-</script>
 <script>
   let aboutIndex = 0;
   const aboutSlides = document.querySelectorAll(".about-slide");
@@ -1132,106 +1405,148 @@ body, html {
     observer.observe(section);
   });
 
-  // Скрытие панели при скролле вниз и показ при скролле вверх
-  let lastScrollTop = 0;
-  const navbar = document.getElementById('navbar');
+ </script> 
 
-  window.addEventListener('scroll', function() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > lastScrollTop) {
-      navbar.style.top = "-100px"; 
-    } else {
-      navbar.style.top = "0";
-    }
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  });
-  
-</script>
 <script>
-  
- const slides = document.querySelectorAll(".slider-container img");
-  let currentSlide = 0;
+  document.addEventListener("DOMContentLoaded", function () {
+    // === СКРЫТИЕ/ПОКАЗ НАВБАРА ПРИ СКРОЛЛЕ (МОБИЛКА И ПК) ===
+    let lastScrollTop = 0;
+    const navbar = document.getElementById("navbar");
 
-  function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[index].classList.add("active");
-  }
+    window.addEventListener("scroll", function () {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  function changeSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide >= slides.length) currentSlide = 0;
-    if (currentSlide < 0) currentSlide = slides.length - 1;
-    showSlide(currentSlide);
-  }
+      if (scrollTop > lastScrollTop) {
+        navbar.style.top = "-100px"; // скрытие
+      } else {
+        navbar.style.top = "0"; // показ
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+
+    // === СЛАЙДЕР С ПОДДЕРЖКОЙ ТАЧ-ЖЕСТОВ ===
+    const slides = document.querySelectorAll(".slider-container img");
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[index].classList.add("active");
+    }
+
+    function changeSlide(direction) {
+      currentSlide += direction;
+      if (currentSlide >= slides.length) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = slides.length - 1;
+      showSlide(currentSlide);
+    }
+
+    // Автоматическая прокрутка (по желанию)
+    // setInterval(() => changeSlide(1), 5000);
+
+    // === TOUCH-СЛАЙД ДЛЯ МОБИЛЬНЫХ ===
+    let startX = 0;
+    let endX = 0;
+    const slider = document.querySelector(".slider-container");
+
+    if (slider) {
+      slider.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      });
+
+      slider.addEventListener("touchend", (e) => {
+        endX = e.changedTouches[0].clientX;
+        handleSwipe();
+      });
+    }
+
+    function handleSwipe() {
+      const threshold = 50; // минимальное расстояние для свайпа
+      const diff = endX - startX;
+
+      if (Math.abs(diff) > threshold) {
+        changeSlide(diff > 0 ? -1 : 1);
+      }
+    }
+  });
 </script>
 
-<footer style="
-  width: 99vw; /* занять всю ширину окна */
-  position: relative;
-  left: 0;
-  background: #222;
-  color: #eee;
-  padding: 40px 0px;
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-  box-sizing: border-box; /* чтобы padding не увеличивал ширину */
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
-  margin: 0; /* убрать внешние отступы */
-">
 
+<style>
+  footer {
+    width: 99vw;
+    background: #222;
+    color: #eee;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+    margin: 0;
+  }
 
+  footer .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-  <div style="max-width: 1200px; margin: 0 auto;">
+  footer nav {
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
 
-    <!-- Навигация -->
-    <nav style="margin-bottom: 25px;">
-      <a href="#" style="
-        color: #fce08c;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 18px;
-        transition: color 0.3s ease;
-      " onmouseover="this.style.color='#b4963b'" onmouseout="this.style.color='#fce08c'">Главная</a>
-      <a href="#" style="
-        color: #fce08c;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 18px;
-        transition: color 0.3s ease;
-      " onmouseover="this.style.color='#b4963b'" onmouseout="this.style.color='#fce08c'">О нас</a>
-      <a href="#" style="
-        color: #fce08c;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 18px;
-        transition: color 0.3s ease;
-      " onmouseover="this.style.color='#b4963b'" onmouseout="this.style.color='#fce08c'">Контакты</a>
-    </nav>
+  footer nav a {
+    color: #fce08c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
 
-    <!-- Соцсети -->
-    <div style="margin-bottom: 30px;">
-      <a href="https://wa.me/77053089733" target="_blank" style="margin: 0 10px; display: inline-block; vertical-align: middle; transition: transform 0.3s ease;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fce08c" viewBox="0 0 24 24" style="filter: drop-shadow(0 0 2px #51e700);">
-          <path d="M20.52 3.48A11.87 11.87 0 0012 0C5.372 0 0 5.372 0 12a11.98 11.98 0 001.605 6.122L0 24l5.922-1.604A11.936 11.936 0 0012 24c6.628 0 12-5.372 12-12 0-3.205-1.247-6.22-3.48-8.52zm-8.58 17.43a7.98 7.98 0 01-4.287-1.214l-.306-.183-3.134.847.837-3.054-.2-.31a7.974 7.974 0 113.99 3.814zm4.03-5.342c-.217-.108-1.276-.63-1.47-.7-.195-.071-.337-.107-.48.108-.143.217-.55.7-.675.843-.124.143-.248.161-.465.054-.217-.107-.913-.337-1.74-1.073-.643-.57-1.075-1.277-1.2-1.493-.124-.217-.013-.334.095-.442.097-.096.217-.248.325-.372.108-.124.143-.217.217-.362.072-.145.036-.27-.018-.377-.054-.108-.48-1.162-.658-1.59-.173-.418-.35-.36-.48-.367l-.41-.007c-.143 0-.374.054-.57.27-.195.216-.74.72-.74 1.754 0 1.034.758 2.04.863 2.18.108.145 1.49 2.27 3.61 3.184.504.218.896.348 1.202.445.504.162.963.14 1.327.085.404-.062 1.276-.52 1.457-1.022.18-.504.18-.937.126-1.028-.054-.09-.195-.145-.412-.253z"/>
-        </svg>
-      </a>
-      <a href="https://www.instagram.com/erekshe.analar?igsh=azliYm1jY3Z3cHU1" target="_blank" style="margin: 0 10px; display: inline-block; vertical-align: middle; transition: transform 0.3s ease;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fce08c" viewBox="0 0 24 24" style="filter: drop-shadow(0 0 2px #b4963b);">
-          <path d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm4.5-1.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"/>
-          <circle cx="12" cy="12" r="3"/>
-        </svg>
-      </a>
-    </div>
-    <!-- Текст копирайта -->
-    <p style="font-size: 16px; margin: 0;">&copy; 2025 Все права защищены</p>
+  footer nav a:hover {
+    color: #b4963b;
+  }
 
-  </div>
-</footer>
+  footer .socials {
+    margin-bottom: 30px;
+  }
 
+  footer .socials a {
+    margin: 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+  }
+
+  footer .socials svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  footer p {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* Адаптация под мобильные устройства */
+  @media (max-width: 600px) {
+    footer nav a {
+      font-size: 16px;
+      margin: 5px 10px;
+    }
+
+    footer .socials svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    footer p {
+      font-size: 14px;
+    }
+  }
+</style>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     let cabinetSlideIndex = 0;
@@ -1278,6 +1593,75 @@ scrollBtn.addEventListener('click', () => {
 });
 
 </script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+<script type="text/javascript">
+  ymaps.ready(function () {
+    // Левая карта
+    var mapLeft = new ymaps.Map('map-left', {
+      center: [51.142466, 71.474330],
+      zoom: 17,
+      controls: []
+    });
+    mapLeft.geoObjects.add(new ymaps.Placemark([51.142466, 71.474330], {
+      hintContent: 'ул. Сатпаева 23/1',
+      balloonContent: 'Добро пожаловать!'
+    }));
+
+    // Центральная карта
+    var mapCenter = new ymaps.Map('map-center', {
+      center: [51.145902, 71.399312],
+      zoom: 17,
+      controls: []
+    });
+    mapCenter.geoObjects.add(new ymaps.Placemark([51.145902, 71.399312], {
+      hintContent: 'ул. Акын Сара 37',
+      balloonContent: 'Центральная точка'
+    }));
+
+    // Правая карта
+    var mapRight = new ymaps.Map('map-right', {
+      center: [51.143161, 71.478633],
+      zoom: 17,
+      controls: []
+    });
+    mapRight.geoObjects.add(new ymaps.Placemark([51.143161, 71.478633], {
+      hintContent: 'ул. Аманат 12/1',
+      balloonContent: 'Правый офис'
+    }));
+  });
+</script>
+<footer>
+  <div class="footer-container">
+
+    <!-- Навигация -->
+    <nav>
+      <a href="#">Главная</a>
+      <a href="#">О нас</a>
+      <a href="#">Контакты</a>
+    </nav>
+
+    <!-- Соцсети -->
+    <div class="socials">
+      <a href="https://wa.me/77053089733" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fce08c" viewBox="0 0 24 24" style="filter: drop-shadow(0 0 2px #51e700);">
+          <path d="M20.52 3.48A11.87 11.87 0 0012 0C5.372 0 0 5.372 0 12a11.98 11.98 0 001.605 6.122L0 24l5.922-1.604A11.936 11.936 0 0012 24c6.628 0 12-5.372 12-12 0-3.205-1.247-6.22-3.48-8.52zm-8.58 17.43a7.98 7.98 0 01-4.287-1.214l-.306-.183-3.134.847.837-3.054-.2-.31a7.974 7.974 0 113.99 3.814zm4.03-5.342c-.217-.108-1.276-.63-1.47-.7-.195-.071-.337-.107-.48.108-.143.217-.55.7-.675.843-.124.143-.248.161-.465.054-.217-.107-.913-.337-1.74-1.073-.643-.57-1.075-1.277-1.2-1.493-.124-.217-.013-.334.095-.442.097-.096.217-.248.325-.372.108-.124.143-.217.217-.362.072-.145.036-.27-.018-.377-.054-.108-.48-1.162-.658-1.59-.173-.418-.35-.36-.48-.367l-.41-.007c-.143 0-.374.054-.57.27-.195.216-.74.72-.74 1.754 0 1.034.758 2.04.863 2.18.108.145 1.49 2.27 3.61 3.184.504.218.896.348 1.202.445.504.162.963.14 1.327.085.404-.062 1.276-.52 1.457-1.022.18-.504.18-.937.126-1.028-.054-.09-.195-.145-.412-.253z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/erekshe.analar?igsh=azliYm1jY3Z3cHU1" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fce08c" viewBox="0 0 24 24" style="filter: drop-shadow(0 0 2px #b4963b);">
+          <path d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm4.5-1.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Текст копирайта -->
+    <p>&copy; 2025 Все права защищены</p>
+
+  </div>
+</footer>
+
 
 
 </body>
